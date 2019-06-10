@@ -1,5 +1,5 @@
 {% set version = '4.3.1.dev' %}
-{% set buildnumber = 2 %}
+{% set buildnumber = 3 %}
 
 package:
   name: libctl
@@ -17,7 +17,8 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('fortran') }}
+    - {{ compiler('fortran') }}  # [linux]
+    - gfortran_osx-64 4.*  # [osx]
   host:
     - pkg-config
     - guile
