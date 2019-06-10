@@ -29,12 +29,5 @@ deploy:
   - provider: script
     script: ./conda_upload.sh main
     on:
-      tags: true
       branch: master
-    skip_cleanup: true
-
-  - provider: script
-    script: ./conda_upload.sh dev
-    on:
-      branch: dev
     skip_cleanup: true
