@@ -1,0 +1,35 @@
+{% set version = '4.3.1.dev' %}
+{% set buildnumber = 2 %}
+
+package:
+  name: libctl
+  version: {{version}}
+
+source:
+  git_url: https://github.com/NanoComp/libctl.git
+  git_rev: master
+
+build:
+  number: {{buildnumber}}
+  features:
+    - nomkl
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+  host:
+    - pkg-config
+    - guile
+
+test:
+  commands:
+    - test -f ${PREFIX}/lib/libctlgeom${SHLIB_EXT}
+
+about:
+  home: http:/github.com/NanoComp/libctl
+  license: GPL-2.0
+  license_file: COPYING
+  summary:  A Guile-based library for supporting flexible control files in scientific simulations
+  doc_url: http://libctl.readthedocs.io
+  dev_url: https://github.com/NanoComp/libctl
